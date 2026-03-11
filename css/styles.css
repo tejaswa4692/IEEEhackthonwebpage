@@ -274,37 +274,7 @@ img, svg { display: block; }
 }
 
 /* Brand */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.nav-logo-badge {
-  background: var(--ieee-blue);
-  color: #fff;
-  padding: 0.15rem 0.55rem;
-  border-radius: 2px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-}
-
-/* Nav chapter label: white on hero, blue on white navbar */
-.nav-chapter {
-  color: #fff;                  /* white over dark hero */
-  letter-spacing: 0.05em;
-  transition: color var(--transition-slow);
-}
-.navbar.scrolled .nav-chapter {
-  color: var(--text-primary);   /* navy once scrolled */
-}
-.nav-chapter .dim {
-  opacity: 0.5;
-}
+/* nav-brand, nav-logo, nav-chapter — defined in LOGO STYLES section below */
 
 /* Desktop links */
 .nav-links {
@@ -506,14 +476,11 @@ img, svg { display: block; }
   padding: 0.35rem 1rem;
   border-radius: 999px;
   font-family: 'Space Mono', monospace;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
 }
-
-
-
 .badge-sep { opacity: 0.4; }
 
 /* Giant event title */
@@ -657,6 +624,27 @@ img, svg { display: block; }
   margin-bottom: 0.5rem;
 }
 
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+  opacity: 0.4;
+  animation: scrollBounce 2.5s ease-in-out infinite;
+}
+.scroll-hint span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
 .scroll-line {
   width: 1px;
   height: 40px;
@@ -1194,15 +1182,7 @@ img, svg { display: block; }
   margin-top: 1rem;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #fff;
-}
+/* footer-logo — replaced by image-based .footer-logo-row (see LOGO STYLES section) */
 
 .footer-heading {
   font-family: 'Space Mono', monospace;
@@ -1293,4 +1273,200 @@ img, svg { display: block; }
 ::selection {
   background: var(--ieee-blue-light);
   color: var(--ieee-blue-dark);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   LOGO STYLES — added for real image logos
+   Covers: navbar, hero co-host strip, about org strip, footer
+═══════════════════════════════════════════════════════ */
+
+/* ── Navbar brand ───────────────────────────────────── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Two logos stacked in the brand: light shown on transparent navbar,
+   dark shown once .scrolled fires */
+.nav-logo { display: block; height: 26px; width: auto; object-fit: contain; }
+.nav-logo-light { opacity: 1;  transition: opacity 0.3s; }
+.nav-logo-dark  { display: none; }
+
+.navbar.scrolled .nav-logo-light { display: none; }
+.navbar.scrolled .nav-logo-dark  { display: block; }
+
+.nav-chapter {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+}
+.navbar.scrolled .nav-chapter { color: var(--ieee-accent); }
+.nav-chapter .dim { opacity: 0.5; }
+
+
+/* ── Hero co-host logos ─────────────────────────────── */
+/* Sits above the badge text — shows RAS × IAS white logos */
+.hero-cohost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.hero-cohost-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  /* These logos have black backgrounds — we invert to white for the dark hero */
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+/* IAS logo is square so we need auto width constraint */
+.hero-cohost-img-ias {
+  height: 52px;
+}
+
+.hero-cohost-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1;
+  margin-top: -2px;
+}
+
+
+/* ── About section: "Organised by" logo strip ───────── */
+.org-strip {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ieee-blue-light);
+}
+
+.org-strip-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.org-strip-logos {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.org-logo {
+  object-fit: contain;
+  display: block;
+}
+
+/* IEEE wordmark — compact, just the diamond + text */
+.org-logo-ieee {
+  height: 32px;
+  width: auto;
+}
+
+/* RAS and IAS society logos — wider, need more room */
+.org-logo-society {
+  height: 44px;
+  width: auto;
+  /* IAS main logo has a white background — fits naturally on the white about section */
+  /* RAS coloured logo has a transparent background — fits directly */
+}
+
+.org-strip-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--ieee-blue-light);
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+
+/* ── Footer logo row ────────────────────────────────── */
+.footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.footer-logo-img {
+  object-fit: contain;
+  display: block;
+  /* All footer logos inverted to white because bg is dark navy */
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.footer-logo-ieee {
+  height: 24px;
+  width: auto;
+}
+
+.footer-logo-society {
+  height: 36px;
+  width: auto;
+}
+
+.footer-logo-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.15);
+  margin: 0 16px;
+  flex-shrink: 0;
+}
+
+
+/* ── Responsive adjustments ─────────────────────────── */
+@media (max-width: 768px) {
+  .hero-cohost { gap: 14px; }
+  .hero-cohost-img { height: 36px; }
+  .hero-cohost-img-ias { height: 40px; }
+  .hero-cohost-sep { font-size: 1.5rem; }
+
+  .org-strip-logos { gap: 0; }
+  .org-logo-ieee    { height: 26px; }
+  .org-logo-society { height: 36px; }
+  .org-strip-divider { margin: 0 12px; height: 28px; }
+
+  .footer-logo-row { gap: 0; }
+  .footer-logo-ieee    { height: 20px; }
+  .footer-logo-society { height: 28px; }
+  .footer-logo-divider { margin: 0 10px; height: 22px; }
+}
+
+@media (max-width: 480px) {
+  .hero-cohost { flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+  .org-strip-logos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .org-strip-divider { display: none; }
+
+  .footer-logo-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .footer-logo-divider { display: none; }
 }

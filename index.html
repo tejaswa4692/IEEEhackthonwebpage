@@ -1,12 +1,3 @@
-<!-- Documentation for how this website works is written by me in documentation txt file but heres a brief description: -->
-<!-- I used a js populater design approach while making this webpage to avoid the htmml from getting unreadadble and use the html and css for the visual features and not the text itself
-while the js is used for text and i made the helper functions in js to pupulate the html onload 
-this ensures proper readablity of the html file and it makes it easier to make css changes in this website -->
-<!-- 
-The js file contains all the data for the website in arrays and the helper functions to populate the html with that data onload 
-and also the code for the countdown timer and the hamburger menu for mobile view -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +10,14 @@ and also the code for the countdown timer and the hamburger menu for mobile view
 </head>
 <body>
 
-  <!-- NAVBAR — desktop ul#nav-links + mobile ul#nav-mobile populated by JS -->
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <div class="nav-brand">
-        <span class="nav-logo-badge">IEEE</span>
+      <a href="#hero" class="nav-brand">
+        <img src="assets/ieee-logos/ieee_white.png" alt="IEEE" class="nav-logo nav-logo-light" height="26" />
+        <img src="assets/ieee-logos/ieee_blue.png"  alt="IEEE" class="nav-logo nav-logo-dark"  height="26" />
         <span class="nav-chapter">RAS <span class="dim">×</span> IAS</span>
-      </div>
+      </a>
       <ul class="nav-links" id="nav-links"></ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -34,7 +26,7 @@ and also the code for the countdown timer and the hamburger menu for mobile view
     <ul class="nav-mobile" id="nav-mobile"></ul>
   </nav>
 
-  <!-- HERO — static title/cta; #hero-meta pills populated by JS -->
+  <!-- HERO — dark navy -->
   <section class="hero" id="hero">
     <div class="hero-bg">
       <div class="grid-overlay"></div>
@@ -53,24 +45,38 @@ and also the code for the countdown timer and the hamburger menu for mobile view
         </svg>
       </div>
     </div>
+
     <div class="hero-content">
-      <div class="hero-badge animate-up delay-1">
-        <span>IEEE RAS × IAS</span><span class="badge-sep">|</span><span>Student Chapter</span>
+      <!-- Co-hosted badge with actual logos -->
+      <div class="hero-cohost animate-up delay-1">
+        <img src="assets/ras-logos/ras_white.png" alt="IEEE Robotics & Automation Society" class="hero-cohost-img" />
+        <span class="hero-cohost-sep">×</span>
+        <img src="assets/ias-logos/ias_white.png" alt="IEEE Industry Applications Society" class="hero-cohost-img hero-cohost-img-ias" />
       </div>
-      <h1 class="hero-title animate-up delay-2">
+
+      <div class="hero-badge animate-up delay-2">
+        <span>Student Branch Chapter</span>
+        <span class="badge-sep">|</span>
+        <span>MITS Gwalior</span>
+      </div>
+
+      <h1 class="hero-title animate-up delay-3">
         <span class="title-line-1">HACKATHON</span>
         <span class="title-year">2026</span>
       </h1>
-      <p class="hero-tagline animate-up delay-3">
+
+      <p class="hero-tagline animate-up delay-4">
         Engineer the Future. <em>Automate the Impossible.</em>
       </p>
-      <!-- Meta pills injected by JS from HERO_META array -->
-      <div class="hero-meta animate-up delay-4" id="hero-meta"></div>
-      <div class="hero-actions animate-up delay-5" id="register">
+
+      <div class="hero-meta animate-up delay-5" id="hero-meta"></div>
+
+      <div class="hero-actions animate-up delay-6" id="register">
         <button class="btn btn-primary" onclick="return false;">Register Now <span class="btn-arrow">&#8594;</span></button>
         <a href="#about" class="btn btn-ghost">Learn More</a>
       </div>
-      <div class="hero-countdown animate-up delay-6">
+
+      <div class="hero-countdown animate-up delay-7">
         <span class="countdown-label">Event starts in</span>
         <div class="countdown-blocks" id="countdown">
           <div class="cd-block"><span class="cd-num" id="cd-days">--</span><span class="cd-unit">Days</span></div>
@@ -83,26 +89,38 @@ and also the code for the countdown timer and the hamburger menu for mobile view
         </div>
       </div>
     </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
   </section>
 
-  <!-- ABOUT — static text; #about-stats cards populated by JS -->
+  <!-- ABOUT — white -->
   <section class="about section" id="about">
     <div class="container">
       <div class="section-label">About the Event</div>
       <div class="about-grid">
         <div class="about-text">
           <h2 class="section-heading">Where Robotics Meets<br />Industrial Intelligence</h2>
-          <p>IEEE RAS × IAS Hackathon 2026 is a collaborative 36-hour engineering challenge that unites students passionate about robotics, automation, and intelligent systems. Hosted jointly by the IEEE Robotics &amp; Automation Society (RAS) and the IEEE Industry Applications Society (IAS) student chapters, this event pushes participants to design, prototype, and pitch real-world solutions.</p>
+          <p>IEEE RAS × IAS Hackathon 2026 is a collaborative 36-hour engineering challenge that unites students passionate about robotics, automation, and intelligent systems. Hosted jointly by the IEEE Robotics &amp; Automation Society (RAS) and the IEEE Industry Applications Society (IAS) student chapters at MITS Gwalior, this event pushes participants to design, prototype, and pitch real-world solutions.</p>
           <p>Bring your ideas, your curiosity, and your team — and leave with industry connections, hands-on experience, and possibly a winning project that solves a genuine engineering challenge.</p>
           <blockquote class="about-quote">"Bridging the gap between academic innovation and industrial impact."</blockquote>
+
+          <!-- Organised by strip — coloured logos on white -->
+          <div class="org-strip">
+            <span class="org-strip-label">Organised by</span>
+            <div class="org-strip-logos">
+              <img src="assets/ieee-logos/ieee_blue.png"    alt="IEEE"                                  class="org-logo org-logo-ieee" />
+              <div class="org-strip-divider"></div>
+              <img src="assets/ras-logos/ras_colour.png"   alt="IEEE Robotics & Automation Society"    class="org-logo org-logo-society" />
+              <div class="org-strip-divider"></div>
+              <img src="assets/ias-logos/ias_main.png"     alt="IEEE Industry Applications Society"    class="org-logo org-logo-society" />
+            </div>
+          </div>
         </div>
-        <!-- Stat cards injected by JS from STATS array -->
         <div class="about-stats" id="about-stats"></div>
       </div>
     </div>
   </section>
 
-  <!-- TRACKS — #tracks-grid populated by JS from TRACKS array -->
+  <!-- TRACKS -->
   <section class="tracks section" id="tracks">
     <div class="container">
       <div class="section-label">Challenge Tracks</div>
@@ -112,7 +130,7 @@ and also the code for the countdown timer and the hamburger menu for mobile view
     </div>
   </section>
 
-  <!-- SCHEDULE — #schedule-tabs + #schedule-timelines populated by JS from SCHEDULE array -->
+  <!-- SCHEDULE -->
   <section class="schedule section" id="schedule">
     <div class="container">
       <div class="section-label">Event Schedule</div>
@@ -123,7 +141,7 @@ and also the code for the countdown timer and the hamburger menu for mobile view
     </div>
   </section>
 
-  <!-- FAQ — #accordion populated by JS from FAQ_ITEMS array -->
+  <!-- FAQ -->
   <section class="faq section" id="faq">
     <div class="container faq-container">
       <div class="section-label">FAQ</div>
@@ -133,7 +151,7 @@ and also the code for the countdown timer and the hamburger menu for mobile view
     </div>
   </section>
 
-  <!-- CTA BANNER (fully static) -->
+  <!-- CTA BANNER -->
   <section class="cta-banner">
     <div class="container cta-inner">
       <h2 class="cta-heading">Ready to Build the Future?</h2>
@@ -143,41 +161,47 @@ and also the code for the countdown timer and the hamburger menu for mobile view
     <div class="cta-stripe"></div>
   </section>
 
-  <!-- FOOTER — #footer-links + #social-links populated by JS -->
+  <!-- FOOTER — deep navy -->
   <footer class="footer" id="footer">
     <div class="container footer-grid">
+
       <div class="footer-col footer-about">
-        <div class="footer-logo">
-          <span class="nav-logo-badge">IEEE</span>
-          <span>RAS × IAS</span>
+        <!-- Three white logos stacked / in a row -->
+        <div class="footer-logo-row">
+          <img src="assets/ieee-logos/ieee_white.png"  alt="IEEE"    class="footer-logo-img footer-logo-ieee" />
+          <div class="footer-logo-divider"></div>
+          <img src="assets/ras-logos/ras_white.png"   alt="IEEE RAS" class="footer-logo-img footer-logo-society" />
+          <div class="footer-logo-divider"></div>
+          <img src="assets/ias-logos/ias_white.png"   alt="IEEE IAS" class="footer-logo-img footer-logo-society" />
         </div>
-        <p>IEEE Robotics &amp; Automation Society and Industry Applications Society — Student Chapter. Fostering technical excellence and professional growth in automation &amp; robotics since 2018.</p>
+        <p>IEEE Robotics &amp; Automation Society and Industry Applications Society — Student Branch Chapter, MITS Gwalior. Fostering technical excellence and professional growth in automation &amp; robotics since 2018.</p>
       </div>
+
       <div class="footer-col">
         <h5 class="footer-heading">Quick Links</h5>
-        <!-- Populated by JS from FOOTER_LINKS array -->
         <ul class="footer-links" id="footer-links"></ul>
       </div>
+
       <div class="footer-col">
         <h5 class="footer-heading">Connect With Us</h5>
-        <!-- Populated by JS from SOCIAL_LINKS array -->
         <div class="social-links" id="social-links"></div>
         <p class="footer-contact">
           <strong>Contact:</strong>
-          <a href="mailto:25cd1te143@mitsgwl.ac.in">25cd1te143@mitsgwl.ac.in</a>
+          <a href="mailto:ieeerasias@chapter.edu">ieeerasias@chapter.edu</a>
         </p>
       </div>
+
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <span>© 2026 IEEE RAS × IAS Student Chapter. All rights reserved.</span>
-        <span>Made by gods programmer.</span>
+        <span>&#169; 2026 IEEE RAS &#215; IAS Student Chapter, MITS Gwalior. All rights reserved.</span>
+        <span>Made with &#9829; for the engineering community.</span>
       </div>
     </div>
   </footer>
 
-  <script src="js/data.js"></script>  
-  <script src="js/helpers.js"></script>  
-  <script src="js/main.js"></script>    
+  <script src="js/data.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
