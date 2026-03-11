@@ -279,11 +279,6 @@ open index.html          # macOS
 start index.html         # Windows
 xdg-open index.html      # Linux
 
-# Or serve locally (optional, for testing network-loaded fonts)
-python3 -m http.server 8080
-# then visit http://localhost:8080
-```
-
 ---
 
 ## License
