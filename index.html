@@ -1,0 +1,183 @@
+<!-- Documentation for how this website works is written by me in documentation txt file but heres a brief description: -->
+<!-- I used a js populater design approach while making this webpage to avoid the htmml from getting unreadadble and use the html and css for the visual features and not the text itself
+while the js is used for text and i made the helper functions in js to pupulate the html onload 
+this ensures proper readablity of the html file and it makes it easier to make css changes in this website -->
+<!-- 
+The js file contains all the data for the website in arrays and the helper functions to populate the html with that data onload 
+and also the code for the countdown timer and the hamburger menu for mobile view -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEEE RAS × IAS Hackathon 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR — desktop ul#nav-links + mobile ul#nav-mobile populated by JS -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-logo-badge">IEEE</span>
+        <span class="nav-chapter">RAS <span class="dim">×</span> IAS</span>
+      </div>
+      <ul class="nav-links" id="nav-links"></ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-mobile" id="nav-mobile"></ul>
+  </nav>
+
+  <!-- HERO — static title/cta; #hero-meta pills populated by JS -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="circuit-lines">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,200 200,200 260,140 600,140 660,200 900,200" class="circuit-path" />
+          <polyline points="1440,400 1200,400 1140,460 840,460 780,400 500,400" class="circuit-path" />
+          <polyline points="300,900 300,700 360,640 560,640 620,700 620,900" class="circuit-path" />
+          <circle cx="260" cy="140" r="6" class="circuit-dot" />
+          <circle cx="660" cy="200" r="6" class="circuit-dot" />
+          <circle cx="1140" cy="460" r="6" class="circuit-dot" />
+          <circle cx="360" cy="640" r="6" class="circuit-dot" />
+        </svg>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge animate-up delay-1">
+        <span>IEEE RAS × IAS</span><span class="badge-sep">|</span><span>Student Chapter</span>
+      </div>
+      <h1 class="hero-title animate-up delay-2">
+        <span class="title-line-1">HACKATHON</span>
+        <span class="title-year">2026</span>
+      </h1>
+      <p class="hero-tagline animate-up delay-3">
+        Engineer the Future. <em>Automate the Impossible.</em>
+      </p>
+      <!-- Meta pills injected by JS from HERO_META array -->
+      <div class="hero-meta animate-up delay-4" id="hero-meta"></div>
+      <div class="hero-actions animate-up delay-5" id="register">
+        <button class="btn btn-primary" onclick="return false;">Register Now <span class="btn-arrow">&#8594;</span></button>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
+      <div class="hero-countdown animate-up delay-6">
+        <span class="countdown-label">Event starts in</span>
+        <div class="countdown-blocks" id="countdown">
+          <div class="cd-block"><span class="cd-num" id="cd-days">--</span><span class="cd-unit">Days</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-hours">--</span><span class="cd-unit">Hrs</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-mins">--</span><span class="cd-unit">Min</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-secs">--</span><span class="cd-unit">Sec</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — static text; #about-stats cards populated by JS -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">About the Event</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-heading">Where Robotics Meets<br />Industrial Intelligence</h2>
+          <p>IEEE RAS × IAS Hackathon 2026 is a collaborative 36-hour engineering challenge that unites students passionate about robotics, automation, and intelligent systems. Hosted jointly by the IEEE Robotics &amp; Automation Society (RAS) and the IEEE Industry Applications Society (IAS) student chapters, this event pushes participants to design, prototype, and pitch real-world solutions.</p>
+          <p>Bring your ideas, your curiosity, and your team — and leave with industry connections, hands-on experience, and possibly a winning project that solves a genuine engineering challenge.</p>
+          <blockquote class="about-quote">"Bridging the gap between academic innovation and industrial impact."</blockquote>
+        </div>
+        <!-- Stat cards injected by JS from STATS array -->
+        <div class="about-stats" id="about-stats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS — #tracks-grid populated by JS from TRACKS array -->
+  <section class="tracks section" id="tracks">
+    <div class="container">
+      <div class="section-label">Challenge Tracks</div>
+      <h2 class="section-heading centered">Pick Your Arena</h2>
+      <p class="section-sub centered">Three distinct tracks — one mission: engineer what's next.</p>
+      <div class="tracks-grid" id="tracks-grid"></div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE — #schedule-tabs + #schedule-timelines populated by JS from SCHEDULE array -->
+  <section class="schedule section" id="schedule">
+    <div class="container">
+      <div class="section-label">Event Schedule</div>
+      <h2 class="section-heading centered">36 Hours. Two Days.</h2>
+      <p class="section-sub centered">Every minute counts.</p>
+      <div class="schedule-tabs" id="schedule-tabs"></div>
+      <div id="schedule-timelines"></div>
+    </div>
+  </section>
+
+  <!-- FAQ — #accordion populated by JS from FAQ_ITEMS array -->
+  <section class="faq section" id="faq">
+    <div class="container faq-container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-heading centered">Got Questions?</h2>
+      <p class="section-sub centered">Everything you need to know before you register.</p>
+      <div class="accordion" id="accordion"></div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER (fully static) -->
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <h2 class="cta-heading">Ready to Build the Future?</h2>
+      <p class="cta-sub">Spots are limited. Secure yours before March 1, 2026.</p>
+      <button class="btn btn-primary btn-lg" onclick="return false;">Register Now — It's Free <span class="btn-arrow">&#8594;</span></button>
+    </div>
+    <div class="cta-stripe"></div>
+  </section>
+
+  <!-- FOOTER — #footer-links + #social-links populated by JS -->
+  <footer class="footer" id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-about">
+        <div class="footer-logo">
+          <span class="nav-logo-badge">IEEE</span>
+          <span>RAS × IAS</span>
+        </div>
+        <p>IEEE Robotics &amp; Automation Society and Industry Applications Society — Student Chapter. Fostering technical excellence and professional growth in automation &amp; robotics since 2018.</p>
+      </div>
+      <div class="footer-col">
+        <h5 class="footer-heading">Quick Links</h5>
+        <!-- Populated by JS from FOOTER_LINKS array -->
+        <ul class="footer-links" id="footer-links"></ul>
+      </div>
+      <div class="footer-col">
+        <h5 class="footer-heading">Connect With Us</h5>
+        <!-- Populated by JS from SOCIAL_LINKS array -->
+        <div class="social-links" id="social-links"></div>
+        <p class="footer-contact">
+          <strong>Contact:</strong>
+          <a href="mailto:25cd1te143@mitsgwl.ac.in">25cd1te143@mitsgwl.ac.in</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 IEEE RAS × IAS Student Chapter. All rights reserved.</span>
+        <span>Made by gods programmer.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>  
+  <script src="js/helpers.js"></script>  
+  <script src="js/main.js"></script>    
+</body>
+</html>
